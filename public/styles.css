@@ -16,3 +16,26 @@
 .prose li {
     margin-bottom: 0.5em;
 }
+
+/* Optional custom styles */
+
+/* Ensure elements with the hidden class are not displayed */
+.hidden {
+    display: none;
+  }
+  
+  /* Style for the feedback container */
+  .feedback-container {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+  }
+  
+  /* Style for each feedback section */
+  .feedback-section h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Adjust list styling */
+  .feedback-section ul {
+    margin-left: 1rem;
+  }

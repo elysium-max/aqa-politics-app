@@ -1,46 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQA Politics Feedback Companion</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQA Politics Feedback Companion</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
-    <div class="container mx-auto px-4 py-8">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800">AQA Politics Feedback Companion</h1>
-            <p class="text-gray-600 mt-2">Your AI-powered study assistant</p>
-        </header>
+  <div class="container mx-auto px-4 py-8">
+    <!-- Header Section -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800">AQA Politics Feedback Companion</h1>
+      <p class="text-gray-600 mt-2">Your AI-powered study assistant</p>
+    </header>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Question Input Section -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold mb-4">Practice Question</h2>
-                <textarea 
-                    id="questionInput"
-                    class="w-full h-32 p-4 border rounded-md mb-4"
-                    placeholder="Enter your essay response here..."
-                ></textarea>
-                <button 
-                    id="submitBtn"
-                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                    Get Feedback
-                </button>
-            </div>
+    <!-- Main Form Container -->
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <!-- Paper Selection -->
+      <div id="sectionPaper" class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Select Paper</h2>
+        <select id="paperSelect" class="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">-- Choose Paper --</option>
+          <option value="UK Government and Politics">UK Government and Politics</option>
+          <option value="US and Comparative Politics">US and Comparative Politics</option>
+          <option value="Political Ideas">Political Ideas</option>
+        </select>
+      </div>
 
-            <!-- Feedback Display Section -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold mb-4">Feedback</h2>
-                <div id="feedbackDisplay" class="prose">
-                    <p class="text-gray-600">Submit your response to get feedback...</p>
-                </div>
-            </div>
-        </div>
+      <!-- Question Type Selection -->
+      <div id="sectionQuestionType" class="mb-8 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Select Question Type</h2>
+        <select id="questionTypeSelect" class="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">-- Choose Question Type --</option>
+        </select>
+      </div>
+
+      <!-- Exam Question Entry -->
+      <div id="sectionExamQuestion" class="mb-8 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Exam Question</h2>
+        <textarea id="examQuestion" class="w-full h-32 p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type or paste the exam question here..."></textarea>
+      </div>
+
+      <!-- Extract Text Entry (Conditional) -->
+      <div id="sectionExtract" class="mb-8 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Extract Text</h2>
+        <textarea id="extractText" class="w-full h-48 p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="For extract-based questions, paste the extract text here..."></textarea>
+      </div>
+
+      <!-- Student Response Entry -->
+      <div id="sectionStudentResponse" class="mb-8 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Your Answer</h2>
+        <textarea id="studentResponse" class="w-full h-64 p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type or paste your answer here..."></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div id="sectionSubmit" class="hidden">
+        <button id="submitBtn" class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Generate Feedback
+        </button>
+      </div>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Feedback Display Section -->
+    <div class="max-w-xl mx-auto bg-white mt-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold mb-4">Feedback</h2>
+      <div id="feedbackDisplay">
+        <p class="text-gray-600">Submit your response to receive detailed feedback...</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="app.js"></script>
 </body>
 </html>
