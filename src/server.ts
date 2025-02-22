@@ -7,7 +7,7 @@ import helmet from "helmet";
 import compression from "compression";
 
 const app = express();
-const PORT = config.port;
+const PORT = config.port || 3000;
 
 const corsOptions = {
   origin: ["http://localhost:3000", "https://your-production-domain.com"],
@@ -20,7 +20,6 @@ app.use(helmet());
 app.use(compression());
 app.use(cors(corsOptions));
 
-// Increase JSON payload limit to 1mb to resolve HTTP 413 errors.
 app.use(
   express.json({
     limit: "1mb",
@@ -28,7 +27,8 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from the ../public directory relative to the compiled code.
+// Serve static files from the public directory.
+// Note: Make sure the "public" folder is in your repository root.
 const publicPath = path.join(__dirname, "../public");
 app.use(
   express.static(publicPath, {
@@ -61,7 +61,7 @@ app.get("/", (_req, res) => {
 });
 
 // Global error handler.
-app.use((err: Error, _req: express.Request, res: express.Response) => {
+app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error("Unhandled error:", err);
   res.status(500).json({
     error: "Internal Server Error",
@@ -79,7 +79,7 @@ app.use((_req, res) => {
   });
 });
 
-// Only start the server if this file is run directly (e.g. locally).
+// Only start the server if running locally.
 if (require.main === module) {
   const server = app.listen(PORT, () => {
     console.log(`
