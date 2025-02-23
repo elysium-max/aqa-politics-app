@@ -25,10 +25,10 @@ app.use(
     limit: "1mb",
   })
 );
+
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from the public directory.
-// Note: Make sure the "public" folder is in your repository root.
+// Serve static files from the public folder, which should be present at the repository root.
 const publicPath = path.join(__dirname, "../public");
 app.use(
   express.static(publicPath, {
@@ -55,7 +55,7 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
-// Serve index.html for the root path
+// Serve index.html for the root path.
 app.get("/", (_req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
@@ -79,7 +79,7 @@ app.use((_req, res) => {
   });
 });
 
-// Only start the server if running locally.
+// Only start the server if running locally (e.g., using 'node dist/server.js').
 if (require.main === module) {
   const server = app.listen(PORT, () => {
     console.log(`
